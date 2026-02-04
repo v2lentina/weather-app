@@ -1,0 +1,135 @@
+/* Weather Card */
+.weather-card {
+  border-radius: 24px;
+  padding: 40px;
+  min-width: 350px;
+  max-width: 420px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  transition: background 0.5s ease, color 0.3s ease;
+  color: white;
+}
+
+/* Dynamische Hintergrundfarben + Kontrast */
+.weather-card.default {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  color: white;
+}
+
+.weather-card.clear {
+  background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%);
+  color: white;
+}
+
+.weather-card.clouds {
+  background: linear-gradient(135deg, #a4b0be 0%, #57606f 100%);
+  color: white;
+}
+
+.weather-card.rain,
+.weather-card.drizzle {
+  background: linear-gradient(135deg, #576574 0%, #222f3e 100%);
+  color: white;
+}
+
+.weather-card.thunderstorm {
+  background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+  color: white;
+}
+
+.weather-card.snow {
+  background: linear-gradient(135deg, #e8f4f8 0%, #b8d4e3 100%);
+  color: #2d3436;
+}
+
+.weather-card.mist,
+.weather-card.fog {
+  background: linear-gradient(135deg, #d3d3d3 0%, #808080 100%);
+  color: #1a1a1a;
+}
+
+/* Datum */
+.weather-date {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 8px;
+  font-weight: 300;
+}
+
+/* Stadtname */
+.weather-city {
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0 0 25px 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Wetter Icon */
+.weather-icon-container {
+  margin-bottom: 15px;
+}
+
+.weather-emoji {
+  font-size: 80px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.weather-description {
+  font-size: 18px;
+  text-transform: capitalize;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Temperatur */
+.weather-temp {
+  font-size: 90px;
+  font-weight: 200;
+  margin: 15px 0 30px 0;
+  line-height: 1;
+}
+
+/* Details */
+.weather-details {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid rgba(128, 128, 128, 0.3);
+  padding-top: 25px;
+  margin-top: 10px;
+}
+
+.weather-detail {
+  text-align: center;
+}
+
+.weather-detail-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.75;
+  margin: 0 0 8px 0;
+}
+
+.weather-detail-value {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Loading & Error */
+.loading {
+  font-size: 18px;
+  opacity: 0.8;
+  padding: 60px 0;
+}
+
+.error {
+  font-size: 16px;
+  background: rgba(255, 100, 100, 0.3);
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
