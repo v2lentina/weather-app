@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# 🌤️ Weather API Microfrontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A practice project demonstrating **Module Federation** with Vite. This Weather API app serves as a remote microfrontend that can be consumed by a host application (Gaia).
 
-Currently, two official plugins are available:
+## 🎯 Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is a learning exercise to understand:
 
-## React Compiler
+- Module Federation architecture
+- Microfrontend communication patterns
+- Exposing React components as remote modules
+- Sharing dependencies between host and remote apps
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🏗️ Architecture
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+┌─────────────────────────────────────────────────────────┐
+│                 GAIA (Host App)                         │
+│                                                         │
+│   ┌─────────────────────────────────────────────────┐   │
+│   │  import WeatherApp from 'weatherRemote/WeatherApp'  │
+│   │                                                 │   │
+│   │  <WeatherApp city="Berlin" />                   │   │
+│   └─────────────────────────────────────────────────┘   │
+│                         │                               │
+│                         │ loads at runtime              │
+│                         ▼                               │
+│   ┌─────────────────────────────────────────────────┐   │
+│   │        WEATHER API (Remote/Microfrontend)       │   │
+│   │                 Port 3001                       │   │
+│   │                                                 │   │
+│   │        Exposes: WeatherApp Component            │   │
+│   └─────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────┘
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build (required for Module Federation)
+npm run preview
 ```
+
+### Ports
+
+- **Development**: http://localhost:3001
+- **Preview**: http://localhost:3001
