@@ -1,4 +1,4 @@
-const API_KEY = "d10f16e31e906179f583d3b09adac045";
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 const GEOCODING_URL = "https://api.openweathermap.org/geo/1.0/direct";
 const WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather";
 
@@ -62,27 +62,26 @@ export const getWeatherByCoords = async (
   }
 };
 
-// export const getWeatherByCity = async (
-//   cityName: string
-// ): Promise<WeatherData> => {
-//   try {
-//     const coords = await getCoordinates(cityName);
-//     const weather = await getWeatherByCoords(coords.lat, coords.lon);
-
-//     return weather;
-//   } catch (error) {
-//     console.error("getWeatherByCity Error:", error);
-//     throw error;
-//   }
-// };
-
 export const getWeatherByCity = async (
   cityName: string
 ): Promise<WeatherData> => {
-  return {
-    temp: 18,
-    feels_like: 16,
-    humidity: 65,
-    description: "Clouds",
-  };
+  try {
+    const coords = await getCoordinates(cityName);
+    const weather = await getWeatherByCoords(coords.lat, coords.lon);
+
+    return weather;
+  } catch (error) {
+    console.error("getWeatherByCity Error:", error);
+    throw error;
+  }
 };
+
+// export const getWeatherByCity = async (): //cityName: string
+// Promise<WeatherData> => {
+//   return {
+//     temp: 18,
+//     feels_like: 16,
+//     humidity: 65,
+//     description: "Clouds",
+//   };
+// };

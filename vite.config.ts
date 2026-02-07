@@ -9,7 +9,7 @@ export default defineConfig({
       name: "weatherRemote",
       filename: "remoteEntry.js",
       exposes: {
-        "./WeatherApi": "./src/components/WeatherApi.tsx",
+        "./WeatherApp": "./src/components/WeatherApp.tsx",
       },
       shared: ["react", "react-dom"],
     }),
