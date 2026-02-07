@@ -104,14 +104,14 @@ const WeatherApp = ({ city: initialCity }: WeatherAppProps) => {
 
           <div className="weather-details">
             <div className="weather-detail">
-              <p className="weather-detail-label">Feels Like</p>
+              <p className="weather-detail-label">Sunrise</p>
               <p className="weather-detail-value">
-                {weather.feels_like.toFixed(1)}°C
+                {weather.sunrise}
               </p>
             </div>
             <div className="weather-detail">
-              <p className="weather-detail-label">Humidity</p>
-              <p className="weather-detail-value">{weather.humidity}%</p>
+              <p className="weather-detail-label">Sunset</p>
+              <p className="weather-detail-value">{weather.sunset}</p>
             </div>
           </div>
         </>
